@@ -1,18 +1,13 @@
 #include "scanPCN.h"
 #include <Joystick.h>
 
-// extern const int PCNlatchPin;
-// extern const int PCNclockPin;
-// extern const int PCNdataPin;
-const int PCNlatchPin = 7;
-const int PCNdataPin = 4;
-const int PCNclockPin = 6;
+extern const uint8_t PCNlatchPin;
+extern const uint8_t PCNclockPin;
+extern const uint8_t PCNdataPin;
 
 const byte registreLength = 8;
-const bool debug = true;
-// extern const byte registreLength;
-// extern const bool debug;
 
+extern const bool debug;
 extern byte PCNvalues[4];
 extern Joystick_ Joystick;
 

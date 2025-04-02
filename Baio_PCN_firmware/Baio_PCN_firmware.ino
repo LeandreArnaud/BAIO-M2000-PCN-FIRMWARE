@@ -5,29 +5,27 @@
 
 #include "writePCNDigits.h"
 #include "scanPCN.h"
+#include "pins.h"
 
 
 /********* PINs SETUP **********/
 // const int PCN_SDA = 2;
 // const int PCN_SCL = 3;
 
-const int PCNlatchPin = 7;
-const int PCNdataPin = 4;
-const int PCNclockPin = 6;
-// const byte registreLength = 8;
-const byte PCNbacklightPin = 5;
-
-const bool debug = true;
-
+const uint8_t PCNlatchPin = 7;
+const uint8_t PCNdataPin = 4;
+const uint8_t PCNclockPin = 6;
+const uint8_t PCNbacklightPin = 5;
 
 
 /********* INIT VALUES AND CST **********/
+const bool debug = true;
+
 byte PCNvalues[4] = {255, 255, 255, 255};
 const char* lat = "12.34.5";
 const char* lon = "12.34.56";
 uint8_t prep = 1;
 uint8_t dest = 1;
-
 
 bool isDCSinmission = false;
 
