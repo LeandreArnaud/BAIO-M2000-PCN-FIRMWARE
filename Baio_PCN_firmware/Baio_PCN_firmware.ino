@@ -4,17 +4,20 @@
 #include "DcsBios.h"
 
 #include "writePCNDigits.h"
+#include "scanPCN.h"
 
 
 /********* PINs SETUP **********/
-const int PPA_SDA = 2;
-const int PPA_SCL = 3;
+// const int PPA_SDA = 2;
+// const int PPA_SCL = 3;
+
 const int PPAlatchPin = 7;
 const int PPAdataPin = 4;
 const int PPAclockPin = 6;
+// const byte registreLength = 8;
 const byte PPAbacklightPin = 5;
 
-const bool debug = false;
+const bool debug = true;
 
 
 
@@ -37,7 +40,7 @@ bool isDCSinmission = false;
 Joystick_ Joystick(
   0x06, // id of the gamepad, icrease in other pads to avoid conflict
   0x05, //Gamepad
-  16, // button
+  33, // button
   0, // hat
   false, // X
   false, // Y
@@ -71,11 +74,11 @@ void setup() {
 
   pinMode(PPAbacklightPin, OUTPUT);
 
-  // pinMode(PPAlatchPin, OUTPUT);
-  // pinMode(PPAclockPin, OUTPUT);
-  // pinMode(PPAdataPin, INPUT);
+  pinMode(PPAlatchPin, OUTPUT);
+  pinMode(PPAclockPin, OUTPUT);
+  pinMode(PPAdataPin, INPUT);
 
-  // Joystick.begin();
+  Joystick.begin();
 
   if (debug) Serial.begin(9600);
 
@@ -101,7 +104,9 @@ void setup() {
 void loop() {
   DcsBios::loop();
 
-  // scanPPA();
+  scanPCN();
+  delay(10);
+
   // delay(10);
   // writePPADigits(bombeNumber, bombeMeters, mis, misp, mag, magp, par);
   // if (!isDCSinmission && bitRead(PPAvalues[0], 7)) {
@@ -110,6 +115,5 @@ void loop() {
   //   writePPADigits(bombeNumber, bombeMeters, mis, misp, mag, magp, par);
   // }
 
-  writePCNDigits();
-  delay(1000);
+  // writePCNDigits();
 }
