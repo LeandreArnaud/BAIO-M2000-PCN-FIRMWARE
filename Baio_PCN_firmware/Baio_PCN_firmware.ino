@@ -8,14 +8,14 @@
 
 
 /********* PINs SETUP **********/
-// const int PPA_SDA = 2;
-// const int PPA_SCL = 3;
+// const int PCN_SDA = 2;
+// const int PCN_SCL = 3;
 
-const int PPAlatchPin = 7;
-const int PPAdataPin = 4;
-const int PPAclockPin = 6;
+const int PCNlatchPin = 7;
+const int PCNdataPin = 4;
+const int PCNclockPin = 6;
 // const byte registreLength = 8;
-const byte PPAbacklightPin = 5;
+const byte PCNbacklightPin = 5;
 
 const bool debug = true;
 
@@ -72,11 +72,11 @@ void setup() {
   matrix.setBrightness(1);
   matrix.setDisplayState(true);
 
-  pinMode(PPAbacklightPin, OUTPUT);
+  pinMode(PCNbacklightPin, OUTPUT);
 
-  pinMode(PPAlatchPin, OUTPUT);
-  pinMode(PPAclockPin, OUTPUT);
-  pinMode(PPAdataPin, INPUT);
+  pinMode(PCNlatchPin, OUTPUT);
+  pinMode(PCNclockPin, OUTPUT);
+  pinMode(PCNdataPin, INPUT);
 
   Joystick.begin();
 
@@ -88,7 +88,7 @@ void setup() {
     delay(100);
   }
   matrix.writeDisplay();
-  analogWrite(PPAbacklightPin, 255);
+  analogWrite(PCNbacklightPin, 255);
 }
 
 
@@ -108,11 +108,11 @@ void loop() {
   delay(10);
 
   // delay(10);
-  // writePPADigits(bombeNumber, bombeMeters, mis, misp, mag, magp, par);
-  // if (!isDCSinmission && bitRead(PPAvalues[0], 7)) {
-  //   writePPADigits(88, 88, 1, 1, 1, 1, 1);
+  // writePCNDigits(bombeNumber, bombeMeters, mis, misp, mag, magp, par);
+  // if (!isDCSinmission && bitRead(PCNvalues[0], 7)) {
+  //   writePCNDigits(88, 88, 1, 1, 1, 1, 1);
   // } else {
-  //   writePPADigits(bombeNumber, bombeMeters, mis, misp, mag, magp, par);
+  //   writePCNDigits(bombeNumber, bombeMeters, mis, misp, mag, magp, par);
   // }
 
   // writePCNDigits();

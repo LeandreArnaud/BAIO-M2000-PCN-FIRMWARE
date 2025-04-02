@@ -1,12 +1,12 @@
 #include "scanPCN.h"
 #include <Joystick.h>
 
-// extern const int PPAlatchPin;
-// extern const int PPAclockPin;
-// extern const int PPAdataPin;
-const int PPAlatchPin = 7;
-const int PPAdataPin = 4;
-const int PPAclockPin = 6;
+// extern const int PCNlatchPin;
+// extern const int PCNclockPin;
+// extern const int PCNdataPin;
+const int PCNlatchPin = 7;
+const int PCNdataPin = 4;
+const int PCNclockPin = 6;
 
 const byte registreLength = 8;
 const bool debug = true;
@@ -18,15 +18,15 @@ extern Joystick_ Joystick;
 
 
 void scanPCN() {
-  digitalWrite(PPAlatchPin,1);
+  digitalWrite(PCNlatchPin,1);
   delayMicroseconds(20);
-  digitalWrite(PPAlatchPin,0);
+  digitalWrite(PCNlatchPin,0);
 
   for (int k=0; k<4; k++) {
     for (int i=7; i>=0; i--) {
-      digitalWrite(PPAclockPin, 0);
+      digitalWrite(PCNclockPin, 0);
       delayMicroseconds(2);
-      bool value = digitalRead(PPAdataPin);
+      bool value = digitalRead(PCNdataPin);
       
       // if value has changed
       if (value != bitRead(PCNvalues[k], i)) {
@@ -41,7 +41,7 @@ void scanPCN() {
         if (debug) Serial.println("----");
       }
 
-      digitalWrite(PPAclockPin, 1);
+      digitalWrite(PCNclockPin, 1);
       delayMicroseconds(2);
     }
 
