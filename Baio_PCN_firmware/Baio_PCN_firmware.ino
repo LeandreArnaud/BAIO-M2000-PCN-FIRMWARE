@@ -23,7 +23,7 @@ const bool debug = true;
 
 byte PCNvalues[4] = {255, 255, 255, 255};
 const char* lat = "12.34.5";
-const char* lon = "12.34.56";
+const char* lon = "76.89.01";
 uint8_t prep = 1;
 uint8_t dest = 1;
 
@@ -80,13 +80,8 @@ void setup() {
 
   if (debug) Serial.begin(9600);
 
-  // init digits
-  for (uint8_t i=0; i<8; i++) {
-    matrix.displaybuffer[i] = 0b0000000000000000;
-    delay(100);
-  }
-  matrix.writeDisplay();
-  analogWrite(PCNbacklightPin, 255);
+  analogWrite(PCNbacklightPin, 10);
+  delay(100);
 }
 
 
@@ -105,13 +100,7 @@ void loop() {
   scanPCN();
   delay(10);
 
-  // delay(10);
-  // writePCNDigits(bombeNumber, bombeMeters, mis, misp, mag, magp, par);
-  // if (!isDCSinmission && bitRead(PCNvalues[0], 7)) {
-  //   writePCNDigits(88, 88, 1, 1, 1, 1, 1);
-  // } else {
-  //   writePCNDigits(bombeNumber, bombeMeters, mis, misp, mag, magp, par);
-  // }
-
-  // writePCNDigits();
+  // TODO: opti to do not refresh if not needed
+  writePCNDigits();
+  delay(10);
 }
